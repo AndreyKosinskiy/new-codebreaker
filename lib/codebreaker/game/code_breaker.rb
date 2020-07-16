@@ -49,6 +49,8 @@ module Game
       @current_stat.init_attempts_count > @current_stat.used_attempts_count
     end
 
-    attr_reader :hint
+    def hint
+      @hint.hint
+    end
   end
 end
