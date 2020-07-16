@@ -13,7 +13,7 @@ module BeforeGame
     end
 
     def hint
-      return 'User used all the hints' if @hints_count.zero?
+      return false if @hints_count.zero?
 
       @hints_items.pop
     end
