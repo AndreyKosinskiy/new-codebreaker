@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative '../../before_game/registration_player'
 require_relative '../../before_game/difficult_chooser'
 require_relative '../../statistic/statistic_row'
@@ -11,7 +12,7 @@ RSpec.describe Game::CodeBreaker do
   let(:game) { Game::CodeBreaker.new(player: player, difficult: difficult) }
 
   it 'should return correct answer for code' do
-    game.instance_variable_set(:@code, [6,5,4,3])
-    expect(game.my_guess(input_value:'5643')).to eq([true, true, false, false])
+    game.instance_variable_set(:@code, [6, 5, 4, 3])
+    expect(game.my_guess(input_value: '5643')).to eq([true, true, false, false])
   end
 end

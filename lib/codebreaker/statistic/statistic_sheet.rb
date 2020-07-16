@@ -1,5 +1,4 @@
 module Statistic
-
   class StatisticSheet
     def initialize(storage:, row: nil)
       @new_row = row

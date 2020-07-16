@@ -3,6 +3,7 @@
 module BeforeGame
   class Hint
     attr_accessor :hints_count, :hints_items
+
     def initialize(hints_count:)
       @hints_count = hints_count
     end
