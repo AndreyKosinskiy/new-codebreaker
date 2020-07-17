@@ -2,6 +2,7 @@ require_relative '../validation/guess'
 module Game
   class CodeBreaker
     include Validation
+    attr_accessor :current_stat
 
     def initialize(player:, difficult:)
       @current_stat = Statistic::StatisticRow.new(player: player, difficult_init: difficult)
