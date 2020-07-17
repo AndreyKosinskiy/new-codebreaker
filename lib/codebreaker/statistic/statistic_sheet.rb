@@ -1,5 +1,7 @@
 module Statistic
   class StatisticSheet
+    attr_accessor :new_row
+
     def initialize(storage:, row: nil)
       @new_row = row
       @rows = nil
@@ -7,12 +9,19 @@ module Statistic
     end
 
     def store
-      # @rows = storage.load
-      storage.store([@new_row])
+      @rows = [*load]
+      if @rows.nil?
+        @rows = @new_row
+      else
+        @rows.append(@new_row)
+        @rows.sort_by! { |row| [row.init_attempts_count, row.used_attempts_count, row.used_hits_count] }
+        @rows.map.with_index { |row, rating| row.rating = rating + 1 }
+      end
+      @storage.store(@rows)
     end
 
     def load
-      storage.load
+      @storage.load
     end
   end
 end
