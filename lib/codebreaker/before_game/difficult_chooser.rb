@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'hint'
-
 module BeforeGame
   class DifficultChooser
     DIFFICULT_VARIANTS = [
