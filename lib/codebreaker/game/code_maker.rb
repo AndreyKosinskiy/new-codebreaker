@@ -12,7 +12,7 @@ module Game
     private
 
     def generate_code
-      CODE_DIGITS_RANGE.to_a.sample(CODE_DIGITS_COUNT)
+      Array.new(CODE_DIGITS_COUNT).map { CODE_DIGITS_RANGE.to_a.sample }
     end
   end
 end
