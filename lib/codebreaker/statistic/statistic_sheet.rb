@@ -9,7 +9,7 @@ module Statistic
     end
 
     def store
-      @rows = [*load]
+      @rows = Array(load)
       if @rows.nil?
         @rows = @new_row
       else

@@ -5,7 +5,7 @@ require 'yaml'
 class YamlSaver
   DEFAULT_YAML_FILE_NAME = 'data.yaml'
 
-  def initialize(file_name: DEFAULT_YAML_FILE_NAME, permitted_classes: nil)
+  def initialize(file_name: DEFAULT_YAML_FILE_NAME, permitted_classes: [])
     @file_name = file_name
     @permitted_classes = permitted_classes
 
@@ -16,7 +16,7 @@ class YamlSaver
     File.open(@file_name, 'w') { |f| Psych.dump(entity, f) }
   end
 
-  def load(_permitted_classes = [])
+  def load
     options = { permitted_classes: @permitted_classes, aliases: true }
     File.open(@file_name) { |file| Psych.safe_load(file, **options) }
   end

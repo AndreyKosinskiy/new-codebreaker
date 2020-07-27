@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Game
   class CodeMaker
     CODE_DIGITS_COUNT = 4
