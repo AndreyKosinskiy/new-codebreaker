@@ -28,8 +28,7 @@ RSpec.describe BeforeGame::Hint do
   end
 
   it 'don`t decrement hints_items if hints_items empty ' do
-    expect_hint_count = 1
-    hint_obj = described_class.new(hints_count: expect_hint_count)
+    hint_obj = described_class.new(hints_count: 1)
     hint_obj.generate_hints(code)
     10.times { hint_obj.hint }
     expect(hint_obj.hints_items.size).to eq(0)

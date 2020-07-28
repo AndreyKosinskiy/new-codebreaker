@@ -1,7 +1,4 @@
 RSpec.describe YamlSaver do
-  after(:all) do
-    File.delete(YamlSaver::DEFAULT_YAML_FILE_NAME)
-  end
   let(:empty_instance) { described_class.new }
   let(:entity) { [1, 2, 2, 3, 4] }
 
@@ -14,7 +11,9 @@ RSpec.describe YamlSaver do
   end
 
   it 'create file with "@file_name" if it not exists' do
-    expect(File.exist?(empty_instance.instance_variable_get(:@file_name))).to be_truthy
+    File.delete(YamlSaver::DEFAULT_YAML_FILE_NAME)
+    is_file_create = File.exist?(empty_instance.instance_variable_get(:@file_name))
+    expect(is_file_create).to be_truthy
   end
 
   it 'do not create file with "@file_name" if it exists' do
@@ -25,12 +24,14 @@ RSpec.describe YamlSaver do
   end
 
   it 'store data' do
+    File.delete(YamlSaver::DEFAULT_YAML_FILE_NAME)
     empty_instance.store(entity)
     readed_data = File.open(empty_instance.instance_variable_get(:@file_name)) { |file| Psych.safe_load(file) }
     expect(readed_data).to eq(entity)
   end
 
   it 'load data' do
+    File.delete(YamlSaver::DEFAULT_YAML_FILE_NAME)
     empty_instance.store(entity)
     expect(empty_instance.load).to eq(entity)
   end

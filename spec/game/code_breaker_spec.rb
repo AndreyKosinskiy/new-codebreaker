@@ -11,7 +11,7 @@ RSpec.describe Game::CodeBreaker do
   end
 
   it 'return true if input guess is equeal to secret code' do
-    expect(game.player_win?(answered_array)).to be_truthy
+    expect(be_player_win(answered_array)).to be_truthy
   end
 
   it 'return one correct hint value' do

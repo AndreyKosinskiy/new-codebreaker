@@ -29,10 +29,15 @@ commands:
     steps:
       - run:
           name: rubocop
-          command: bundle exec rubocop
+          command: bundle exec rubocop --require rubocop-rspec
       - run:
           name: fasterer
           command: bundle exec fasterer
+  run_specs:
+    steps:
+      - run:
+          name: run_specs
+          command: bundle exec rspec --format progress spec
 
 jobs:
   lintering:
@@ -40,9 +45,17 @@ jobs:
     steps:
       - defaults
       - run_linters
+  run_specs:
+    executor: default
+    steps:
+      - defaults
+      - run_specs
 
 workflows:
   version: 2.1
   build:
     jobs:
       - lintering
+      - run_specs:
+          requires:
+            - lintering

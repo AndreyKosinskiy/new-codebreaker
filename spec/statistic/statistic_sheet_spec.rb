@@ -1,7 +1,4 @@
 RSpec.describe Statistic::StatisticSheet do
-  after(:all) do
-    File.delete(YamlSaver::DEFAULT_YAML_FILE_NAME)
-  end
   let(:player) { instance_double(BeforeGame::RegistrationPlayer, name: 'Andrey') }
   let(:hint) { instance_double(BeforeGame::Hint, hints_count: 2) }
   let(:difficult) { instance_double(BeforeGame::DifficultChooser, name: 'easy', attempts_count: 15, hint: hint) }
@@ -24,6 +21,7 @@ RSpec.describe Statistic::StatisticSheet do
   end
 
   it 'load data' do
+    File.delete(YamlSaver::DEFAULT_YAML_FILE_NAME)
     instance_sheet.instance_variable_set(:@new_row, row)
     instance_sheet.store
     expect(instance_sheet.load[0]).to be_a(Statistic::StatisticRow)
