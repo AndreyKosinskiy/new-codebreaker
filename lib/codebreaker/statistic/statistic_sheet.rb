@@ -14,7 +14,7 @@ module Statistic
         @rows = @new_row
       else
         @rows.append(@new_row)
-        @rows.sort_by! { |row| [row.init_attempts_count, row.used_attempts_count, row.used_hits_count] }
+        @rows.sort_by! { |row| [row.init_attempts_count, row.used_attempts_count, row.used_hints_count] }
         @rows.map.with_index { |row, rating| row.rating = rating + 1 }
       end
       @storage.store(@rows)

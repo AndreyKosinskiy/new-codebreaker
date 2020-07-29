@@ -55,7 +55,7 @@ module Game
     end
 
     def hint
-      @current_stat.used_hits_count += 1 if can_use_hints?
+      @current_stat.used_hints_count += 1 if can_use_hints?
       @hint.hint
     end
   end
