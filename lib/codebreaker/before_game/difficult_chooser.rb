@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module BeforeGame
   class DifficultChooser
     DIFFICULT_VARIANTS = [
@@ -10,7 +8,9 @@ module BeforeGame
 
     attr_accessor :name, :attempts_count, :hint
 
-    def initialize(difficult_variant:)
+    def initialize(difficult_name:)
+      Validation::DifficultChooser.validation(name: difficult_name, avalible_difficult: DIFFICULT_VARIANTS)
+      difficult_variant = DIFFICULT_VARIANTS.detect { |difficult| difficult[:name] == difficult_name }
       @name = difficult_variant[:name]
       @attempts_count = difficult_variant[:attempts]
       @hint = BeforeGame::Hint.new(hints_count: difficult_variant[:hints])

@@ -1,5 +1,3 @@
-require_relative '../validation/registration'
-
 module BeforeGame
   class RegistrationPlayer
     attr_reader :name
