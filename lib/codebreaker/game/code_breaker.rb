@@ -22,16 +22,18 @@ module Game
       guess.count(true) == CodeMaker::CODE_DIGITS_COUNT
     end
 
-    def each_element_as(arr, value)
-      return [] if arr.nil?
-
-      arr.map { |_element| value }
-    end
-
     def check_guess(guess)
       position_result = position_checker(guess)
       include_result = digits_checker(guess, position_result)
       each_element_as(position_result, true) + each_element_as(include_result, false)
+    end
+
+    private
+
+    def each_element_as(arr, value)
+      return [] if arr.nil?
+
+      arr.map { |_element| value }
     end
 
     def digits_checker(guess, uncheck_digits)

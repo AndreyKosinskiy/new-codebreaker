@@ -20,6 +20,8 @@ module Statistic
       @storage.store(@rows)
     end
 
+    private
+
     def load
       @storage.load
     end

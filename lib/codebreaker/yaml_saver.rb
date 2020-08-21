@@ -13,11 +13,11 @@ class YamlSaver
   end
 
   def store(entity = [])
-    File.open(@file_name, 'w') { |f| Psych.dump(entity, f) }
+    File.open(@file_name, 'w') { |f| YAML.dump(entity, f) }
   end
 
   def load
     options = { permitted_classes: @permitted_classes, aliases: true }
-    File.open(@file_name) { |file| Psych.safe_load(file, **options) }
+    File.open(@file_name) { |file| YAML.safe_load(file, **options) }
   end
 end
