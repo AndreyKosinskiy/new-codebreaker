@@ -13,5 +13,13 @@ module Statistic
       @used_attempts_count = 0
       @used_hints_count = 0
     end
+
+    def can_use_attempts?
+      init_attempts_count > used_attempts_count
+    end
+
+    def can_use_hints?
+      init_hints_count > used_hints_count
+    end
   end
 end

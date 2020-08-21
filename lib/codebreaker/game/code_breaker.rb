@@ -42,14 +42,6 @@ module Game
       @code.zip(guess).map { |code_digit, guess_digit| guess_digit if code_digit == guess_digit }.compact
     end
 
-    def can_use_attempts?
-      @current_stat.init_attempts_count > @current_stat.used_attempts_count
-    end
-
-    def can_use_hints?
-      @current_stat.init_hints_count > @current_stat.used_hints_count
-    end
-
     def hint
       @current_stat.used_hints_count += 1 if can_use_hints?
       @hint.hint
