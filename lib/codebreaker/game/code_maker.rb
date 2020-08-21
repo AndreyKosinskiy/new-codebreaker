@@ -13,7 +13,7 @@ module Game
     private
 
     def generate_code
-      Array.new(CODE_DIGITS_COUNT).map { (CODE_VALUE_MIN..CODE_VALUE_MAX).to_a.sample }
+      Array.new(CODE_DIGITS_COUNT){ rand(CODE_VALUE_MIN..CODE_VALUE_MAX) }
     end
   end
 end
