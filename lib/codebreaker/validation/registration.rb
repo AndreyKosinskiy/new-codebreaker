@@ -1,9 +1,9 @@
 module Validation
   class Registration
-    def self.validation(name:)
-      return if (name.is_a? String) && (3..20).cover?(name.size)
+    def self.validation(name:, min_length:, max_length:)
+      return if (name.is_a? String) && (min_length..max_length).cover?(name.size)
 
-      raise ArgumentError, 'Name - string, required, min length - 3 symbols, max length - 20'
+      raise ArgumentError, "Name - string, required, min length - #{min_length} symbols, max length - #{max_length}"
     end
   end
 

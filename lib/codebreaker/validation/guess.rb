@@ -3,7 +3,7 @@ module Validation
     def self.validation(input_value:)
       return if input_value.scan(/\D/).empty? && size_check(input_value) && number_in_range?(input_value)
 
-      raise ArgumentError, 'Guess - number, required, length - 4 digits, each digit is a number in the range 1-6'
+      raise ArgumentError, "Guess - number, required, length - #{Game::CodeMaker::CODE_DIGITS_COUNT} digits, each digit is a number in the range #{Game::CodeMaker::CODE_VALUE_MIN}-#{Game::CodeMaker::CODE_VALUE_MAX}"
     end
 
     def self.size_check(input_value)
