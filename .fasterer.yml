@@ -18,4 +18,4 @@ speedups:
     getter_vs_attr_reader: true
     setter_vs_attr_writer: true
 exclude_paths:
-  - 'vendor/**/*.rb'  
+  - 'vendor/**/*.rb'
