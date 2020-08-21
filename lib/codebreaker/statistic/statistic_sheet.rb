@@ -10,7 +10,7 @@ module Statistic
 
     def store
       @rows = Array(load)
-      if @rows.nil?
+      if @rows.empty?
         @rows = @new_row
       else
         @rows.append(@new_row)
